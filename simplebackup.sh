@@ -17,7 +17,7 @@ read -p "Enter tape label: " tape_label
 
 # Create multi-volume tar archive
 echo "Creating multi-volume tape archive..."
-tar -b 4096 --directory="$directory" --multi-volume --label="$tape_label" -cf - ./ | mbuffer -m 6G -L -P 80 -f -o /dev/st0
+tar -b 4096 --directory="$directory" --multi-volume --label="$tape_label" -cf - ./ | mbuffer -m 6G -L -P 80 -f -o $tapepath
 #tar clpMvf - $directory -V $tape_label | mbuffer -m 4g -L -P 80 > /dev/st0 
 #tar -M -c -v -f /dev/st0 -L 1024 -b 20 --label="$tape_label" "$directory" | \
 while IFS= read -r line; do
